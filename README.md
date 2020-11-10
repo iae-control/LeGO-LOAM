@@ -1,12 +1,10 @@
 # LeGO-LOAM
 
-This repository contains code for a lightweight and ground optimized lidar odometry and mapping (LeGO-LOAM) system for ROS compatible UGVs. The system takes in point cloud  from a Velodyne VLP-16 Lidar (palced horizontally) and optional IMU data as inputs. It outputs 6D pose estimation in real-time. 
+이 저장소는 LOAM의 계산시간을 감소 시키고 수직법선 벡터를 Levenberg-Marquadt 알고리즘을 이용하여 맵핑하였다.
+사용을 위해 사전에 GTSM 패키지를 설치하여야 한다.
 
-## Dependency
+## 의존성
 
-- [ROS](http://wiki.ros.org/ROS/Installation) (tested with indigo, kinetic, and melodic)
-- [gtsam](https://github.com/borglab/gtsam/releases) (Georgia Tech Smoothing and Mapping library, 4.0.0-alpha2)
-  ```
   wget -O ~/Downloads/gtsam.zip https://github.com/borglab/gtsam/archive/4.0.0-alpha2.zip
   cd ~/Downloads/ && unzip gtsam.zip -d ~/Downloads/
   cd ~/Downloads/gtsam-4.0.0-alpha2/
@@ -15,9 +13,9 @@ This repository contains code for a lightweight and ground optimized lidar odome
   sudo make install
   ```
 
-## Compile
+## 컴파일
 
-You can use the following commands to download and compile the package.
+아래 과정을 통해 다운로드 및 컴파일을 수행한다.
 
 ```
 cd ~/catkin_ws/src
@@ -25,4 +23,4 @@ git clone https://github.com/RobustFieldAutonomyLab/LeGO-LOAM.git
 cd ..
 catkin_make -j1
 ```
-When you compile the code for the first time, you need to add "-j1" behind "catkin_make" for generating some message types. "-j1" is not needed for future compiling.
+초기 컴파일시 -j1 옵션을 사용한다. 추후 변경시 필요없다.
